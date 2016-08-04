@@ -1,0 +1,36 @@
+<div class="container">
+{% extends 'blog/base.html' %}
+{% block content %}
+
+
+
+
+
+<h1>{{ post.title }}</h1>
+<p>{{ post.text|linebreaks }}</p>
+
+{% if user.is_authenticated %}
+<a class="btn btn-default" href="{% url 'edit_beliefs' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+{% endif %}
+
+
+
+
+
+<div id="my-menu">
+    <div class="dropup" id="other_projects">
+      <button  class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Other Projects
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li><a href="{% url 'clothing_design' %}">Check out my clothing designs</a></li>
+        <li><a href="{% url 'cs_scrape' %}">Pick the data you want from CouchSurfing</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="{% url 'home' %}">theDatabase</a></li>
+      </ul>
+    </div>
+</div>
+
+</div>
+{% endblock %}

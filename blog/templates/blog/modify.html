@@ -1,0 +1,26 @@
+<div class="container">
+{% extends 'blog/base.html' %}
+{% block content %}
+
+
+<h4>Modify</h4>
+
+  <form method="POST" class="form-horizontal">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        {{ form.info }}
+    </div>
+    <div class="form-group">
+        <button type="submit" class="save btn btn-default">Save</button>
+    </div>
+  </form>
+
+
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>theDatabase</title>
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/base.css" rel="stylesheet">
+</head>
+
+<body>
+  <h1 id="title"><a href="{% url 'home' %}">theDatabase</a></h1>
+
+      <div class="container" id="header">
+        <ul id="header_list">
+                  <li id="header_list" style="float:left"><a style="height:34" class="btn btn-default" href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span></a></li>
+                  <li id="header_list"><a href="{% url 'my_beliefs' %}" class="btn btn-default" role="button">My Beliefs</a></li>
+                  <li id="header_list"><a href="{% url 'organizations' %}" class="btn btn-default" role="button">Organizations</a></li>
+                  <li id="header_list"><a href="{% url 'contribute' %}" class="btn btn-default" role="button">Contribute</a></li>
+                  <!--
+                  <form method="POST" name="global_search" action="{% url 'global_search' %}">
+                      {% csrf_token %}
+                      <li id="header_list"><input style="height:34px" type="text" name="search_input" placeholder="Search"></li>
+                  </form>
+                -->
+
+                  <form method="POST" action="{% url 'global_search' %}">
+                      {% csrf_token %}
+                      <li id="header_list">{{ search_form.search_input }}</li>
+                      <li id="header_list"><button type="submit" class="save btn btn-default">Search</button></li>
+                  </form>
+                
+          </ul>
+      </div>
+
+
+<div class="container" id="main">
+
+
+
+
+    {% block content %}
+    {% endblock %}
+
+
+
+    <div id="gnome">
+        <a href="{% url 'secret' %}"><img src="/static/images/gnome.jpg"></a>
+    </div>
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<div class="container">
+{% extends 'blog/base.html' %}
+{% block content %}
+
+
+<h4>Directory</h4>
+  <ul>
+    <li><a href="{% url 'home' %}"><h4>News Feed</h4></a>
+      <div id=page-directory>
+          {% for link in links %} <!-- News feed -->
+          <a href="{% url 'modify_news_event' pk=link.pk %}"><p>{{ link }}</p></a>
+          {% endfor %}
+      </div>
+    </li>
+    <li><a href="{% url 'my_beliefs' %}"><h4>My Beliefs</h4></a>
+        <p>{{ beliefs.text }}</p></li>
+    <li><a href="{% url 'organizations' %}"><h4>Organizations</h4></a>
+      <div id=page-directory>
+          {% for organization in organizations %} <!-- News feed -->
+          <a href="{% url 'modify' pk=organization.pk %}"><p>{{ organization.name }}</p></a>
+          {% endfor %}
+      </div>
+    </li>
+    <li><a href="{% url 'contribute' %}"><h4>Contribute</h4></a>
+        <p>{{ contribuy.text }}</p>
+    </li>
+</ul>
+
+
+
+
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+<div class="container">
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<div class="add_news_event">
+  <form enctype="multipart/form-data" method="POST" class="form-horizontal">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Save</button>
+  </form>
+</div>
+
+
+</div>
+{% endblock %}

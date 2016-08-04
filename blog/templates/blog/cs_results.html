@@ -1,0 +1,18 @@
+<div class="container">
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h2>{{ output }}</h2>
+
+{% for result in results %}
+<p>{{ result.value }}</p>
+{% endfor %}
+
+
+
+
+
+
+</div>
+{% endblock %}

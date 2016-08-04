@@ -1,0 +1,23 @@
+<div class="container">
+{% extends 'blog/base.html' %}
+{% block content %}
+
+
+<h4>Search Results</h4>
+
+<div>
+    <ol>
+        {% for result in results %}
+        <li>
+            <h4>{{ result.name }}</h4>
+            <p>{{ result.info}}</p>
+        </li>
+        {% endfor %}
+    </ol>
+  </div>
+
+<a href="{% url 'directory' %}">Site Directory</a>
+
+
+</div>
+{% endblock %}

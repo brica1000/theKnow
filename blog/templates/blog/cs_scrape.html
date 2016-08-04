@@ -1,0 +1,22 @@
+<div class="container">
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1>Scrape from CouchSurfing!</h1>
+
+<form method="POST" class="form-horizontal">
+  {% csrf_token %}
+  <div class="form-group">
+      {{ form.value }}
+  </div>
+  <div class="form-group">
+      {{ form.type1 }}
+  </div>
+  <div class="form-group">
+      <button type="submit" class="save btn btn-default">Save</button>
+  </div>
+</form>
+
+</div>
+{% endblock %}

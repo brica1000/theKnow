@@ -1,0 +1,33 @@
+<div class="container">
+{% extends 'blog/base.html' %}
+{% block content %}
+
+
+<h4>Learn more about how your products are created.</h1>
+
+  <form method="POST" class="form-horizontal">
+      {% csrf_token %}
+      <div class="form-group">
+          {{ search_form.search_input }}
+      </div>
+      <div class="form-group">
+          <button type="submit" class="save btn btn-default">Search</button>
+      </div>
+  </form>
+
+      {% for org in organizations  %}
+      <div class="post">
+        {% if user.is_authenticated %}
+          <h1><a href="{% url 'modify' pk=org.pk %}">{{ org.name }}</a></h1>
+        {% else %}
+          <h1>{{ org.name }}</h1>
+        {% endif %}
+
+          <p>{{ org.info|linebreaks }}</p>
+      </div>
+      {% endfor %}
+
+
+
+</div>
+{% endblock %}
