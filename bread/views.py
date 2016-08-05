@@ -42,14 +42,14 @@ def bread_home(request):
     return render(request, 'bread/home.html', {'zipped':zipped,})
 
 
-def order_form(request):
+def order_form(request, order_time):
     # post = get_object_or_404(Beliefs)
     if request.method == "POST":
         form = OrderForm(request.POST)
         if form.is_valid():
             form.save(commit=False)
             form.save()
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('bread_home'))
     else:
         form = OrderForm()
-    return render(request, 'bread/order_form.html', {'form': form})
+    return render(request, 'bread/order_form.html', {'form': form,})
