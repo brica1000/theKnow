@@ -1,40 +1,37 @@
 {% extends 'bread/base.html' %}
 {% block content %}
 
+<div class="container">
 
 <h1>Welcome! Buy my bread!</h1>
 
 
-<table class="table table-hover">
-  <tr>
-    <th>Order date</th>
-    <th>Free loafs - 9am</th>
-    <th>Free loafs - 7pm</th>
-  </tr>
-  {% for day in days %}
-  <tr>
-    <td><a href="#" >{{ day }}</a></td>
-    <td>
-      <form name="myform" action="index.php">
-        <input type="checkbox" name="c1" value="1" />
-        <input type="checkbox" name="c2" value="1" />
-        <input type="checkbox" name="c3" value="1" />
-        <input type="checkbox" name="c4" value="1" />
-        <input type="checkbox" name="c5" value="1" />
-        <a href="{% url 'order_form' %}" onclick="myform.submit(); return false;">Order</a>
-      </form>
-    </td>
-    <td>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-        </label>
-      </div>
-    </td>
-  </tr>
-  {% endfor %}
-</table>
-
+  <table class="table table-hover">
+    <tr>
+      <th>Order date</th>
+      <th>We have unsold loafs! - 9am</th>
+      <th>Free loafs - 7pm</th>
+    </tr>
+    {% for morning, evening, day in zipped %}
+    <tr>
+      <td><a href="#" >{{ day }}</a></td>
+      <td>
+            {% if morning >= 1 %}
+            <a href="{% url 'order_form' %}">Order</a>
+            {% else %}Sorry, all loafs are reserved
+            {% endif %}
+        </form>
+      </td>
+      <td>
+        {% if evening >= 1 %}
+        <a href="{% url 'order_form' %}">Order</a>
+        {% else %}Sorry, all loafs are reserved
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
 
 
 
