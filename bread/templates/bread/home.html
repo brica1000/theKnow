@@ -17,14 +17,14 @@
       <td><a href="#" >{{ day }}</a></td>
       <td>
             {% if morning >= 1 %}
-            <a href="{% url 'order_form' order_time="morning" %}">Order</a>
+            <a href="{% url 'order_form' order_time="morning" order_day=day.isoformat %}">Order</a>
             {% else %}Sorry, all loafs are reserved
             {% endif %}
         </form>
       </td>
       <td>
         {% if evening >= 1 %}
-        <a href="{% url 'order_form' order_time="evening" %}">Order</a>
+        <a href="{% url 'order_form' order_time="evening" order_day=day.isoformat %}">Order</a>
         {% else %}Sorry, all loafs are reserved
         {% endif %}
       </td>

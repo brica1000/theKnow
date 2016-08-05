@@ -42,8 +42,8 @@ def bread_home(request):
     return render(request, 'bread/home.html', {'zipped':zipped,})
 
 
-def order_form(request, order_time):
-    # post = get_object_or_404(Beliefs)
+def order_form(request, order_time, order_day):
+    data = {'order_slot':order_time,'order_date':order_day,}
     if request.method == "POST":
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -51,5 +51,5 @@ def order_form(request, order_time):
             form.save()
             return HttpResponseRedirect(reverse('bread_home'))
     else:
-        form = OrderForm()
+        form = OrderForm(initial=data)
     return render(request, 'bread/order_form.html', {'form': form,})
