@@ -1,7 +1,8 @@
 <div class="container">
 {% extends 'blog/base.html' %}
-
 {% block content %}
+
+<a href="{% url 'new_user' %}">Register</a>
 
 {% if user.is_authenticated %}
 <h3><a href="{% url 'add_news_event' %}"><span class="glyphicon glyphicon-tree-conifer"></span></a></h3>

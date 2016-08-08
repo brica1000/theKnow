@@ -23,6 +23,10 @@ class Beliefs(models.Model):
     """
 
 
+
+
+
+
 class Org(models.Model):
     name = models.CharField(max_length=200) # Should link to its site
     info = models.TextField()

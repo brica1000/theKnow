@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^home/', views.blog_home, name='home'),
     url(r'^(?P<pk>\d+)/modify_news_event/$', views.modify_news_event, name='modify_news_event'),
     url(r'^add_news_event/', views.add_news_event, name='add_news_event'),
+    url(r'^new_user/', views.new_user, name='new_user'),
     url(r'^my_beliefs/', views.my_beliefs, name='my_beliefs'),
     url(r'^update/(?P<pk>\d+)/$', views.edit_beliefs, name='edit_beliefs'),
     url(r'^cs_scrape/', views.cs_scrape, name='cs_scrape'),

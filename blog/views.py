@@ -3,14 +3,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 
-from .forms import CSInputForm, PostForm, OrgForm, NewsForm, SearchOrgForm
+from .forms import CSInputForm, PostForm, OrgForm, NewsForm, SearchOrgForm, NewUserForm
 from .models import Beliefs, Vari, Org, NewsFeed, Search
 
 from modules.mymodule import Shape
 from modules.mymodule import Searches
-
-
-
 
 
 def blog_home(request):
@@ -31,8 +28,6 @@ def add_news_event(request):
     return render(request, 'blog/add_news_event.html', {'form': form})
 
 
-
-
 def modify_news_event(request, pk):
     news_event = get_object_or_404(NewsFeed, pk=pk)
     if request.method == "POST":
@@ -44,6 +39,18 @@ def modify_news_event(request, pk):
     else:
         form = NewsForm(instance=news_event)
     return render(request, 'blog/modify_news_event.html', {'form':form})
+
+
+def new_user(request):
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = NewUserForm()
+    return render(request, 'blog/new_user.html', {'form':form})
+
 
 
 def my_beliefs(request):
